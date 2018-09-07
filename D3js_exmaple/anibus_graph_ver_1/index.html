@@ -1,0 +1,219 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<link href="<c:url value="/css/graph-time.css" />" rel="stylesheet">
+<!-- JS -->
+
+<script src="<c:url value="/js/lib/jquery-ui.js" />"></script>
+<svg height="50" width=100%>
+	<text class="text_title" transform="143,300" x="900" y="29" dx=".05em">平均乗車時間</text>
+</svg>
+<svg id="chart1">
+   <rect id="rect1" fill="#ffcccc" x="143" y="134" width="41" height="326"></rect>
+   <text transform="rotate(90)" rotate="-90" dx="1.05em" y="-156" x="235"> A &nbsp;&nbsp; I&nbsp;&nbsp; 運  &nbsp; 行</text>
+
+	<rect id="rect_title_1" fill="#4472c4" x="543" y="15" width="38" height="15"></rect>
+	<text transform="143,300" x="487" y="30" dx=".05em">1号車</text>
+	
+	<rect id="rect_title_1" fill="#6dab44" x="643" y="15" width="38" height="15"></rect>
+	<text transform="143,300" x="587" y="30" dx=".05em">2号車</text>
+	
+	<rect id="rect_title_1" fill="#ed7d31" x="443" y="15" width="38" height="15"></rect>
+	<text transform="143,300" x="687" y="30" dx=".05em">3号車</text>
+	
+	<rect id="rect_title_1" fill="#c0504d" x="743" y="15" width="38" height="15"></rect>
+	<text transform="143,300" x="787" y="30" dx=".05em">4号車</text>
+	
+	<rect id="rect_title_1" fill="#00b0f0" x="843" y="15" width="38" height="15"></rect>
+	<text transform="143,300" x="887" y="30" dx=".05em">5号車</text>
+	
+	<rect id="rect_title_1" fill="#8064a2" x="943" y="15" width="38" height="15"></rect>
+	<text transform="143,300" x="987" y="30" dx=".05em">6号車</text>
+	
+	<rect id="rect_title_1" fill="#d3cf27" x="1043" y="15" width="38" height="15"></rect>
+	<text transform="143,300" x="1087" y="30" dx=".05em">7号車</text>
+	
+	<rect id="rect_title_1" fill="#7f7f7f" x="1143" y="15" width="38" height="15"></rect>
+	<text transform="143,300" x="1187" y="30" dx=".05em">8号車</text>
+	
+	<rect id="rect_title_1" fill="#f70cdc" x="1243" y="15" width="38" height="15"></rect>
+	<text transform="143,300" x="1287" y="30" dx=".05em">9号車</text>
+	
+	<rect id="rect_title_1" fill="#28d677" x="1343" y="15" width="38" height="15"></rect>
+	<text transform="143,300" x="1387" y="30" dx=".05em">10号車</text>
+</svg>
+<svg id="chart2">
+   <rect id="rect2" fill="#ffcccc" x="143" y="134" width="41" height="326"></rect>
+   <!-- <rect id="rect_title_1" fill="#ffb1b9" x="643" y="10" width="38" height="15"></rect>
+   <rect id="rect_title_2" fill="#93b6ff" x="543" y="10" width="38" height="15"></rect> -->
+   <text transform="rotate(90)" rotate="-90" dx="1.05em" y="-156" x="235">定 &nbsp;&nbsp; 期&nbsp;&nbsp; 運  &nbsp; 行</text>
+	
+	<rect id="rect_title_1" fill="#4472c4" x="543" y="15" width="38" height="15"></rect>
+	<text transform="143,300" x="487" y="30" dx=".05em">1号車</text>
+	
+	<rect id="rect_title_1" fill="#6dab44" x="643" y="15" width="38" height="15"></rect>
+	<text transform="143,300" x="587" y="30" dx=".05em">2号車</text>
+	
+	<rect id="rect_title_1" fill="#ed7d31" x="443" y="15" width="38" height="15"></rect>
+	<text transform="143,300" x="687" y="30" dx=".05em">3号車</text>
+	
+	<rect id="rect_title_1" fill="#c0504d" x="743" y="15" width="38" height="15"></rect>
+	<text transform="143,300" x="787" y="30" dx=".05em">4号車</text>
+	
+	<rect id="rect_title_1" fill="#00b0f0" x="843" y="15" width="38" height="15"></rect>
+	<text transform="143,300" x="887" y="30" dx=".05em">5号車</text>
+	
+	<rect id="rect_title_1" fill="#8064a2" x="943" y="15" width="38" height="15"></rect>
+	<text transform="143,300" x="987" y="30" dx=".05em">6号車</text>
+	
+	<rect id="rect_title_1" fill="#d3cf27" x="1043" y="15" width="38" height="15"></rect>
+	<text transform="143,300" x="1087" y="30" dx=".05em">7号車</text>
+	
+	<rect id="rect_title_1" fill="#7f7f7f" x="1143" y="15" width="38" height="15"></rect>
+	<text transform="143,300" x="1187" y="30" dx=".05em">8号車</text>
+	
+	<rect id="rect_title_1" fill="#f70cdc" x="1243" y="15" width="38" height="15"></rect>
+	<text transform="143,300" x="1287" y="30" dx=".05em">9号車</text>
+	
+	<rect id="rect_title_1" fill="#28d677" x="1343" y="15" width="38" height="15"></rect>
+	<text transform="143,300" x="1387" y="30" dx=".05em">10号車</text>
+</svg>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+//================================= get data from graph controller ========================
+var aiList = ${aiList};
+var routineList = ${routineList};
+console.log(aiList);
+//====================================== Create chart's frames ============================
+var margin = {top: 80, right: 80, bottom: 80, left: 80},
+   width = 800 - margin.left - margin.right,
+   height = 600 - margin.top - margin.bottom;
+var paddingSgv = 300;
+var x = d3.scale.ordinal()
+   .rangeRoundBands([0, width*2], .1);
+
+var y0 = d3.scale.linear().domain([300, 1100]).range([height, 0]);
+var xData = ["bar1", "bar2"];
+var xAxis = d3.svg.axis()
+   .scale(x)
+   .ticks(7)
+   .orient("bottom")
+   .innerTickSize(-height);
+
+// create left yAxis
+var yAxisLeft = d3.svg.axis().scale(y0)
+	.ticks(7)
+	.orient("left")
+ .innerTickSize(-width*2);
+
+//======================================  Chart 1======================================
+//add tag svg(width, height,) then add tag g(class, tranform--position of g)
+var svg = d3.select("body")
+   .select("#chart1")
+   .attr("width", "100%")
+   .attr("height", height + margin.top + margin.bottom)
+ .append("g")
+   .attr("class", "graph")
+   .attr("transform", "translate(" + paddingSgv + "," + margin.top + ")");
+
+// add data
+ x.domain(aiList.map(function(d) { /* console.log(d.time); */ return d.time; }));
+ y0.domain([0,90]);
+/*  y0.domain([0, d3.max(aiList, function(d) {
+	 return d.dataList[0].totalTravelTime; 
+	})]); */
+
+// add tag g, then call xAxis
+ svg.append("g")
+     .attr("class", "x axis")
+     .attr("transform", "translate(0," + height + ")")
+     .style('opacity', '0.5')
+     .call(xAxis);
+
+// add tag g, then call yAxisLeft
+ svg.append("g")
+   .attr("class", "y axis axisLeft")
+   .attr("transform", "translate(0,0)")
+   .call(yAxisLeft);
+// 
+ bars = svg.selectAll(".bar").data(aiList).enter();
+// draw rect1
+ bars.append("rect")
+     .attr("class", "bar1")
+     .attr("x", function(d) { return x(d.time)+5; })
+     .attr("width", x.rangeBand()/2-6)
+     .attr("y", function(d) { return y0(d.dataList[0].totalTravelTime); })
+   .attr("height", function(d,i,j) { return height - y0(d.dataList[0].totalTravelTime); });
+// draw rect2
+ bars.append("rect")
+   .attr("class", "bar2")
+   .attr("x", function(d) { return x(d.time)+ x.rangeBand()/2; })
+   .attr("width", x.rangeBand()/2-6)
+   .attr("y", function(d) { return y0(d.dataList[1].totalTravelTime); })
+ .attr("height", function(d,i,j) { return height - y0(d.dataList[1].totalTravelTime); });
+// });
+ 
+//==========================================  Chart 2=======================================
+var svg1 = d3.select("body")
+ .select("#chart2")
+   .attr("width", "100%")
+   .attr("height", height + margin.top + margin.bottom)
+ .append("g")
+   .attr("class", "graph")
+   .attr("transform", "translate(" + paddingSgv + "," + margin.top + ")");
+
+// add data for x,y axist
+ x.domain(routineList.map(function(d) { return d.time; }));
+ /* y0.domain([0, d3.max(routineList, function(d) { return d.dataList[1].totalTravelTime+5; })]); */
+y0.domain([0,90]);
+// add tag g, then call xAxis
+ svg1.append("g")
+     .attr("class", "x axis")
+     .attr("transform", "translate(0," + height + ")")
+     .style('opacity', '0.5')
+     .call(xAxis);
+
+// add tag g, then call yAxisLeft
+ svg1.append("g")
+   .attr("class", "y axis axisLeft")
+   .attr("transform", "translate(0,0)")
+   .call(yAxisLeft);
+// 
+ bars = svg1.selectAll(".bar").data(routineList).enter();
+// draw rect1
+ bars.append("rect")
+     .attr("class", "bar1")
+     .attr("x", function(d) { return x(d.time)+5; })
+     .attr("width", x.rangeBand()/2-6)
+     .attr("y", function(d) { return y0(d.dataList[0].totalTravelTime); })
+   .attr("height", function(d,i,j) { return height - y0(d.dataList[0].totalTravelTime); });
+// draw rect2
+ bars.append("rect")
+   .attr("class", "bar2")
+   .attr("x", function(d) { return x(d.time)+ x.rangeBand()/2; })
+   .attr("width", x.rangeBand()/2-6)
+   .attr("y", function(d) { return y0(d.dataList[1].totalTravelTime); })
+ .attr("height", function(d,i,j) { return height - y0(d.dataList[1].totalTravelTime); });
+//=================================== draw text rectangles============================
+//draw title y axist AI
+var text6 = d3.select("body")
+   .select("#chart2")
+   .append("text")
+     .attr("transform", "rotate(-90)")
+     .attr("x", -347)
+     .attr("y", 253)
+     .attr("dx", ".05em")
+     .text("総運行時間(分)");
+//draw title y axist Routine
+var text7 = d3.select("body")
+   .select("#chart1")
+   .append("text")
+     .attr("transform", "rotate(-90)")
+     .attr("x", -347)
+     .attr("y", 253)
+     .attr("dx", ".05em")
+     .text("総運行時間(分)")
+</script>

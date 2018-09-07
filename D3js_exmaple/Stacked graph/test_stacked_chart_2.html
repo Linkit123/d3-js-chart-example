@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link rel="stylesheet" href="">
+  <style>
+body {
+  font: 10px sans-serif;
+  /*opacity: 0.7;*/
+}
+
+.y.axisLeft text {
+    /*fill: steelblue;*/
+   opacity: 0.5;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #09080880;
+  shape-rendering: crispEdges;
+  opacity: 0.3;
+}
+
+.bar1 {
+  fill: #93b6ff;
+  opacity: 0.85;
+}
+
+.bar2 {
+  fill: #ffb1b9;
+  /*padding-right: 20px;*/
+  opacity: 0.8;
+}
+
+.x.axis path {
+  /*display: none;*/
+  opacity: 0.3;
+}
+svg text {
+            /*fill: yellow;*/
+            font: 15px sans-serif;
+            /*text-anchor: end;*/
+         }
+</style>
+</head>
+<body>
+  <svg id="chart1">
+    <rect id="rect1" fill="#ffcccc" x="143" y="134" width="41" height="326"></rect>
+   <text transform="rotate(90)" rotate="-90" dx="1.05em" y="-156" x="235"> A &nbsp;&nbsp; I&nbsp;&nbsp; 運  &nbsp; 行</text>
+
+  <rect id="rect_title_1" fill="#4472c4" x="543" y="15" width="38" height="15"></rect>
+  <text transform="143,300" x="487" y="30" dx=".05em">1号車</text>
+  
+  <rect id="rect_title_1" fill="#6dab44" x="643" y="15" width="38" height="15"></rect>
+  <text transform="143,300" x="587" y="30" dx=".05em">2号車</text>
+  
+  <rect id="rect_title_1" fill="#ed7d31" x="443" y="15" width="38" height="15"></rect>
+  <text transform="143,300" x="687" y="30" dx=".05em">3号車</text>
+  
+  <rect id="rect_title_1" fill="#c0504d" x="743" y="15" width="38" height="15"></rect>
+  <text transform="143,300" x="787" y="30" dx=".05em">4号車</text>
+  
+  <rect id="rect_title_1" fill="#00b0f0" x="843" y="15" width="38" height="15"></rect>
+  <text transform="143,300" x="887" y="30" dx=".05em">5号車</text>
+  
+  <rect id="rect_title_1" fill="#8064a2" x="943" y="15" width="38" height="15"></rect>
+  <text transform="143,300" x="987" y="30" dx=".05em">6号車</text>
+  
+  <rect id="rect_title_1" fill="#d3cf27" x="1043" y="15" width="38" height="15"></rect>
+  <text transform="143,300" x="1087" y="30" dx=".05em">7号車</text>
+  
+  <rect id="rect_title_1" fill="#7f7f7f" x="1143" y="15" width="38" height="15"></rect>
+  <text transform="143,300" x="1187" y="30" dx=".05em">8号車</text>
+  
+  <rect id="rect_title_1" fill="#f70cdc" x="1243" y="15" width="38" height="15"></rect>
+  <text transform="143,300" x="1287" y="30" dx=".05em">9号車</text>
+  
+  <rect id="rect_title_1" fill="#28d677" x="1343" y="15" width="38" height="15"></rect>
+  <text transform="143,300" x="1387" y="30" dx=".05em">10号車</text>
+  </svg>
+  <svg id="chart2">
+    <rect id="rect2" fill="#ffcccc" x="143" y="134" width="41" height="326"></rect>
+   <!-- <rect id="rect_title_1" fill="#ffb1b9" x="643" y="10" width="38" height="15"></rect>
+   <rect id="rect_title_2" fill="#93b6ff" x="543" y="10" width="38" height="15"></rect> -->
+   <text transform="rotate(90)" rotate="-90" dx="1.05em" y="-156" x="235">定 &nbsp;&nbsp; 期&nbsp;&nbsp; 運  &nbsp; 行</text>
+  
+  <rect id="rect_title_1" fill="#4472c4" x="543" y="15" width="38" height="15"></rect>
+  <text transform="143,300" x="487" y="30" dx=".05em">1号車</text>
+  
+  <rect id="rect_title_1" fill="#6dab44" x="643" y="15" width="38" height="15"></rect>
+  <text transform="143,300" x="587" y="30" dx=".05em">2号車</text>
+  
+  <rect id="rect_title_1" fill="#ed7d31" x="443" y="15" width="38" height="15"></rect>
+  <text transform="143,300" x="687" y="30" dx=".05em">3号車</text>
+  
+  <rect id="rect_title_1" fill="#c0504d" x="743" y="15" width="38" height="15"></rect>
+  <text transform="143,300" x="787" y="30" dx=".05em">4号車</text>
+  
+  <rect id="rect_title_1" fill="#00b0f0" x="843" y="15" width="38" height="15"></rect>
+  <text transform="143,300" x="887" y="30" dx=".05em">5号車</text>
+  
+  <rect id="rect_title_1" fill="#8064a2" x="943" y="15" width="38" height="15"></rect>
+  <text transform="143,300" x="987" y="30" dx=".05em">6号車</text>
+  
+  <rect id="rect_title_1" fill="#d3cf27" x="1043" y="15" width="38" height="15"></rect>
+  <text transform="143,300" x="1087" y="30" dx=".05em">7号車</text>
+  
+  <rect id="rect_title_1" fill="#7f7f7f" x="1143" y="15" width="38" height="15"></rect>
+  <text transform="143,300" x="1187" y="30" dx=".05em">8号車</text>
+  
+  <rect id="rect_title_1" fill="#f70cdc" x="1243" y="15" width="38" height="15"></rect>
+  <text transform="143,300" x="1287" y="30" dx=".05em">9号車</text>
+  
+  <rect id="rect_title_1" fill="#28d677" x="1343" y="15" width="38" height="15"></rect>
+  <text transform="143,300" x="1387" y="30" dx=".05em">10号車</text>
+  </svg>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script>
+//================================= get data from graph controller ========================
+var data1=[{"hour":"9:00","bar1":58,"bar2":35,"bar3":60,"bar4":30},{"hour":"10:00","bar1":58,"bar2":42,"bar3":60,"bar4":30},{"hour":"11:00","bar1":48,"bar2":25,"bar3":60,"bar4":30},{"hour":"12:00","bar1":18,"bar2":35,"bar3":60,"bar4":30},
+{"hour":"13:00","bar1":33,"bar2":20,"bar3":60,"bar4":30},{"hour":"14:00","bar1":19,"bar2":25,"bar3":60,"bar4":30},{"hour":"15:00","bar1":50,"bar2":25,"bar3":60,"bar4":30},{"hour":"16:00","bar1":8,"bar2":26,"bar3":60,"bar4":30},{"hour":"17:00","bar1":8,"bar2":26,"bar3":60,"bar4":30},{"hour":"18:00","bar1":8,"bar2":26,"bar3":60,"bar4":30},{"hour":"19:00","bar1":8,"bar2":26,"bar3":60,"bar4":30},{"hour":"20:00","bar1":8,"bar2":26,"bar3":60,"bar4":30},{"hour":"21:00","bar1":8,"bar2":26,"bar3":60,"bar4":30},{"hour":"22:00","bar1":8,"bar2":26,"bar3":60,"bar4":30},{"hour":"23:00","bar1":8,"bar2":26,"bar3":60,"bar4":30}];
+
+var data2=[{"hour":"9:00","bar1":0,"bar2":35,"bar3":60,"bar4":30},{"hour":"10:00","bar1":58,"bar2":0,"bar3":60,"bar4":30},{"hour":"11:00","bar1":48,"bar2":25,"bar3":60,"bar4":30},{"hour":"12:00","bar1":18,"bar2":35,"bar3":60,"bar4":30},
+{"hour":"13:00","bar1":33,"bar2":20,"bar3":60,"bar4":30},{"hour":"14:00","bar1":19,"bar2":25,"bar3":60,"bar4":30},{"hour":"15:00","bar1":50,"bar2":90,"bar3":60,"bar4":30},{"hour":"16:00","bar1":8,"bar2":26,"bar3":60,"bar4":30}];
+
+// var aiList = [
+//   {"time":"1:00","dataList":[
+//                   {"routineSavId":1,"totalTravelTime":25},
+//                   {"routineSavId":2,"totalTravelTime":62}]
+//   },{"time":"2:00","dataList":[
+//                   {"routineSavId":1,"totalTravelTime":45},
+//                   {"routineSavId":2,"totalTravelTime":48}]
+//     }
+// ];
+
+console.log("data ")
+var margin = {top: 80, right: 80, bottom: 80, left: 80},
+    width = 800 - margin.left - margin.right,
+    height = 600 - margin.top - margin.bottom;
+var paddingSgv = 250;
+
+var xData = ["bar1", "bar2","bar3","bar4"];
+
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width*2], .1);
+
+var y0 = d3.scale.linear().domain([300, 1100]).range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .ticks(9)
+    .orient("bottom")
+    .innerTickSize(-height)
+
+// create left yAxis
+var yAxisLeft = d3.svg.axis().scale(y0).ticks(7).orient("left")
+  .innerTickSize(-width*2)
+// var color = d3.scale.
+//     .category(['#ed7d31','#4472c4','#70ad47','#c0504d']);
+function colores_google(n) {
+  var colores_g = ["#ed7d31","#4472c4","#70ad47","#c0504d"];
+  return colores_g[n % colores_g.length];
+}
+// ==================================  Chart 1================================
+//add tag svg(width, height,) then add tag g(class, tranform--position of g)
+    var svg = d3.select("body")
+        .select("#chart1")
+        .attr("width", "100%")
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("class", "graph")
+        .attr("transform", "translate(" + paddingSgv + "," + margin.top + ")");
+// 
+var dataIntermediate = xData.map(function (c) {
+  console.log(c);
+        return data1.map(function (d) {
+          console.log(d);
+            return {x: d.hour, y: d[c]};
+        });
+    });
+// data trung gian
+console.log("data trung gian");
+console.log(dataIntermediate);
+
+var dataStackLayout = d3.layout.stack()(dataIntermediate);
+    // add data for x,y axist
+      x.domain(dataStackLayout[0].map(function(d) {
+        return d.x; 
+      }));
+// sau khi stack
+console.log("sau khi stack");
+console.log(dataStackLayout);
+
+      y0.domain([0, d3.max(dataStackLayout[dataStackLayout.length - 1], function(d) {
+        // console.log(dataStackLayout);
+       return d.y0 + d.y; })])
+
+    // add tag g, then call xAxis
+      svg.append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0," + height + ")")
+          .style('opacity', '0.5')
+          .call(xAxis);
+
+    // // add tag g, then call yAxisLeft
+      svg.append("g")
+        .attr("class", "y axis axisLeft")
+        .attr("transform", "translate(0,0)")
+        .call(yAxisLeft);
+    // 
+var color1 = d3.scale.category20();
+var layer = svg.selectAll(".stack")
+            .data(dataStackLayout)
+            .enter().append("g")
+            .attr("class", "stack")
+            .attr("fill", function(d,i) { return colores_google(i); } );
+
+    layer.selectAll("rect")
+            .data(function (d) {
+                return d;
+            })
+            .enter().append("rect")
+            .attr("x", function (d) {
+                return x(d.x)+18;
+            })
+            .attr("y", function (d) {
+                return y0(d.y + d.y0);
+            })
+            .attr("height", function (d) {
+                return y0(d.y0) - y0(d.y + d.y0);
+            })
+            .attr("width", x.rangeBand()-30);
+    // svg.selectAll(".stack").append("text")
+    //    .attr("x", height/2)
+    //    .attr("y", function(d) { console.log(d.y);return (d*10); })
+    //    .attr("dy", ".35em")
+    //    .text(function(d) { 
+        
+    //     return d; });
+// ==================================  Chart 2================================
+//add tag svg(width, height,) then add tag g(class, tranform--position of g)
+    var svg = d3.select("body")
+        .select("#chart2")
+        .attr("width", width + margin.left + margin.right+500)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("class", "graph")
+        .attr("transform", "translate(" + paddingSgv + "," + margin.top + ")");
+// 
+var dataIntermediate = xData.map(function (c) {
+        return data2.map(function (d) {
+            return {x: d.hour, y: d[c]};
+        });
+    });
+var dataStackLayout = d3.layout.stack()(dataIntermediate);
+    // add data for x,y axist
+      x.domain(dataStackLayout[0].map(function(d) {
+        return d.x; 
+      }));
+      y0.domain([0, d3.max(dataStackLayout[dataStackLayout.length - 1], function(d) {
+        // console.log(dataStackLayout);
+       return d.y0 + d.y; })])
+
+    // add tag g, then call xAxis
+      svg.append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0," + height + ")")
+          .style('opacity', '0.5')
+          .call(xAxis);
+
+    // // add tag g, then call yAxisLeft
+      svg.append("g")
+        .attr("class", "y axis axisLeft")
+        .attr("transform", "translate(0,0)")
+        .call(yAxisLeft);
+    // 
+// var color1 = d3.scale.category20();
+var layer = svg.selectAll(".stack")
+            .data(dataStackLayout)
+            .enter().append("g")
+            .attr("class", "stack")
+            .attr("fill", function(d,i) { return colores_google(i); } );
+
+    layer.selectAll("rect")
+            .data(function (d) {
+                return d;
+            })
+            .enter().append("rect")
+            .attr("x", function (d) {
+                return x(d.x);
+            })
+            .attr("y", function (d) {
+                return y0(d.y + d.y0);
+            })
+            .attr("height", function (d) {
+                return y0(d.y0) - y0(d.y + d.y0);
+            })
+            .attr("width", x.rangeBand()-10);
+</script>
+</body>
+</html>

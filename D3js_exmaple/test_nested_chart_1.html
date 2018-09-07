@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+<title>D3 in Action Examples</title>
+<meta charset="utf-8" />
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<style>
+  body{
+    opacity: 0.3;
+  }
+</style>
+</head>
+<body>
+</body>
+<script>
+function steamgraph(){
+
+// d3.csv("movies.csv", data =>{
+// var data = [
+//   {"time":"1:00","dataList":[
+//                   {"routineSavId":1,"totalTravelTime":25},
+//                   {"routineSavId":2,"totalTravelTime":62}]
+//   },{"time":"2:00","dataList":[
+//                   {"routineSavId":1,"totalTravelTime":50},
+//                   {"routineSavId":2,"totalTravelTime":48}]
+//     }
+//     ,{"time":"3:00","dataList":[
+//                   {"routineSavId":1,"totalTravelTime":45},
+//                   {"routineSavId":2,"totalTravelTime":20}]
+//     }
+//     ,{"time":"4:00","dataList":[
+//                   {"routineSavId":1,"totalTravelTime":20},
+//                   {"routineSavId":2,"totalTravelTime":21}]
+//     }
+// ];
+var data=[
+      {"day":2,"titanic":10,"avatar":18,"akira":2,"frozen":2,"deliverance":2,"avengers":1},
+      {"day":3,"titanic":6,"avatar":2,"akira":1,"frozen":6,"deliverance":4,"avengers":2},
+      {"day":4,"titanic":7,"avatar":8,"akira":4,"frozen":4,"deliverance":3,"avengers":1},
+      {"day":3,"titanic":6,"avatar":2,"akira":1,"frozen":6,"deliverance":4,"avengers":2},
+      {"day":3,"titanic":6,"avatar":2,"akira":1,"frozen":6,"deliverance":4,"avengers":2},
+      {"day":3,"titanic":6,"avatar":2,"akira":1,"frozen":6,"deliverance":4,"avengers":2},
+      {"day":3,"titanic":6,"avatar":2,"akira":1,"frozen":6,"deliverance":4,"avengers":2}];
+    
+    d3.select("body").append("svg").attr("width", 550).attr("height", 500)
+    
+    var xScale = d3.scaleLinear().domain([1,10]).range([60,480])
+    
+    // Notice that the yScale is not inverted on the yScale
+    var yScale = d3.scaleLinear().domain([0,60]).range([480,20]);
+    
+    // We create a heightscale where the y is inverted!
+    var heightScale = d3.scaleLinear().domain([0,60]).range([20, 480]);
+    
+    // var xData = ["time","dataList"];
+    
+    var xData = ["titanic","avatar","akira","frozen","deliverance","avengers"]
+
+    var colorScale = d3.scaleOrdinal().domain(xData).range(["#fcd88a", "#cf7c1c", "#93c464", "#75734F", "#5eafc6", "#41a368"]);
+    
+    console.log(data);
+    
+    yAxis = d3.axisLeft().scale(yScale)
+        .tickSize(-500);
+    
+    d3.select("svg").append("g")
+        .attr("class", "yAxis")
+        .call(yAxis)
+        .attr("transform",`translate(${20}, 0)`)
+    
+    xAxis = d3.axisBottom().scale(xScale)
+        .tickSize(-500)   
+    
+    d3.select("svg").append("g")
+        .attr("class", "xAxis")
+        .call(xAxis)
+        .attr("transform",`translate(0, ${480})`);
+    
+    d3.select("g.xAxis").selectAll("g.tick").selectAll("text")
+    
+    d3.select("g.xAxis").selectAll("g.tick").selectAll("line")
+    
+    var stackLayout = d3.stack()
+        .keys(xData)
+
+    d3.select("svg").selectAll("g.bar")
+    .data(stackLayout(data)) // Pass the sorted data in
+    .enter()
+    .append("g")
+    .attr("class", "bar")
+    .each(function(d) {
+        d3.select(this).selectAll("rect") 
+            .data(d)
+            .enter()
+            .append("rect")
+            .attr("width", 40)
+            .attr("height", p => heightScale(p[1]) - heightScale(p[0]))
+            .attr("x", (p, i) => xScale(i) + 25)
+            .attr("y", p => yScale(p[1]))
+            .style("fill", colorScale(d.key)) ;
+    })
+}
+
+
+steamgraph();
+</script>
+</html>
